@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLIQO | Admin Dashboard</title>
+  <link rel="stylesheet" href="/admin.css">
+  <script src="/admin.js" defer></script>
+</head>
+<body>
+  <main class="login-page" id="loginPage">
+    <section class="login-card">
+      <a class="brand" href="/">CLIQO<span>.</span></a>
+      <p class="eyebrow">ADMINISTRATION</p>
+      <h1>Welcome back</h1>
+      <p class="muted">Sign in to manage your CLIQO community.</p>
+
+      <form id="adminLoginForm">
+        <div class="form-group">
+          <label for="emailOrUsername">Username or email</label>
+          <input
+            id="emailOrUsername"
+            name="emailOrUsername"
+            type="text"
+            placeholder="Enter your username or email"
+            autocomplete="username"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            >
+            <button
+              class="show-password"
+              id="togglePassword"
+              type="button"
+              aria-label="Show password"
+              aria-pressed="false"
+            >Show</button>
+          </div>
+        </div>
+
+        <p class="form-message" id="loginMessage" role="alert"></p>
+        <button class="primary-button" id="loginButton" type="submit">
+          <span id="loginButtonText">Sign in to dashboard</span>
+        </button>
+      </form>
+
+      <p class="security-note">
+        <span>🔒</span> Secure administrator access
+      </p>
+      <a class="back-link" href="/">← Back to CLIQO</a>
+    </section>
+  </main>
+
+  <main class="dashboard" id="dashboardPage" hidden>
+    <aside class="sidebar">
+      <a class="brand sidebar-brand" href="/">CLIQO<span>.</span></a>
+      <p class="sidebar-label">WORKSPACE</p>
+
+      <nav class="side-nav">
+        <button class="nav-link active" type="button" data-section="overview">
+          <span>▦</span> Overview
+        </button>
+        <button class="nav-link" type="button" data-section="users">
+          <span>♙</span> Users
+        </button>
+        <button class="nav-link" type="button" data-section="posts">
+          <span>▤</span> Posts
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="admin-avatar" id="adminAvatar">A</div>
+        <div class="admin-mini">
+          <strong id="sidebarAdminName">Administrator</strong>
+          <small>Admin account</small>
+        </div>
+        <button class="logout-button" id="logoutButton" type="button" title="Log out">
+          ↪
+        </button>
+      </div>
+    </aside>
+
+    <section class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">CLIQO MANAGEMENT</p>
+          <h1 id="pageTitle">Dashboard overview</h1>
+        </div>
+        <div class="topbar-right">
+          <span class="online-dot"></span>
+          <span>Admin session</span>
+        </div>
+      </header>
+
+      <section class="content-section" id="overviewSection">
+        <div class="welcome-banner">
+          <div>
+            <p class="eyebrow light-eyebrow">YOUR COMMUNITY, AT A GLANCE</p>
+            <h2 id="welcomeTitle">Welcome to CLIQO</h2>
+            <p>Manage your members and community posts from one place.</p>
+          </div>
+          <div class="banner-decoration" aria-hidden="true">C.</div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-icon purple">♙</div>
+            <p>Total users</p>
+            <h2 id="totalUsers">—</h2>
+            <small>Registered accounts</small>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon pink">▤</div>
+            <p>Total posts</p>
+            <h2 id="totalPosts">—</h2>
+            <small>Community posts</small>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon green">♛</div>
+            <p>Administrators</p>
+            <h2 id="totalAdmins">—</h2>
+            <small>Admin accounts</small>
+          </article>
+        </div>
+
+        <div class="panel-grid">
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <h3>Recent users</h3>
+                <p>Latest registered members</p>
+              </div>
+              <button class="text-button" data-section="users" type="button">View all</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Member</th><th>Role</th><th>Joined</th></tr>
+                </thead>
+                <tbody id="recentUsersBody">
+                  <tr><td colspan="3" class="empty-state">Loading users…</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <h3>Recent posts</h3>
+                <p>Latest community activity</p>
+              </div>
+              <button class="text-button" data-section="posts" type="button">View all</button>
+            </div>
+            <div id="recentPostsList" class="recent-posts">
+              <p class="empty-state">Loading posts…</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section" id="usersSection" hidden>
+        <article class="panel full-panel">
+          <div class="panel-heading">
+            <div>
+              <h3>Community users</h3>
+              <p>Registered accounts from the database</p>
+            </div>
+            <button class="secondary-button" id="refreshUsers" type="button">Refresh</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Name</th><th>Username</th><th>Email</th><th>Role</th><th>Joined</th></tr>
+              </thead>
+              <tbody id="allUsersBody">
+                <tr><td colspan="5" class="empty-state">Loading users…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="content-section" id="postsSection" hidden>
+        <article class="panel full-panel">
+          <div class="panel-heading">
+            <div>
+              <h3>Community posts</h3>
+              <p>Posts stored in the database</p>
+            </div>
+            <button class="secondary-button" id="refreshPosts" type="button">Refresh</button>
+          </div>
+          <div id="allPostsList" class="all-posts-list">
+            <p class="empty-state">Loading posts…</p>
+          </div>
+        </article>
+      </section>
+
+      <p class="dashboard-message" id="dashboardMessage" role="status"></p>
+    </section>
+  </main>
+</body>
+</html>

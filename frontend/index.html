@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#eee5ff"><title>CLIQO — Your world. Your people.</title><link rel="stylesheet" href="/styles.css"><script defer src="/script.js"></script></head><body><div class="shell">
+<header class="topbar"><a class="brand" href="#">CLIQO<span>.</span></a><p>Your world. Your people.</p><nav><button id="openLogin" class="btn light">Log in</button><button id="openRegister" class="btn primary">Join CLIQO</button><button id="logoutBtn" class="btn light hidden">Log out</button></nav></header>
+<main><section class="hero" id="landingHero"><div><span class="eyebrow">A LITTLE MORE YOU</span><h1>Your people.<br><em>Your kind of place.</em></h1><p>Share your moments, find your community, and keep the good conversations going.</p><button id="heroJoin" class="btn primary large">Get Started ↗</button> <a class="textlink" href="#feed">Explore the Feed ↓</a></div><div class="art"><div class="orbit"></div><div class="artback">✦<br><br>Make space<br>for your people.</div><div class="artfront"><b>c</b><i></i><i></i><i></i><span>♡</span></div><strong>✧</strong></div></section>
+<section class="features" id="landingFeatures"><article class="pink"><b>♡</b><div><h3>Likes</h3><p>Show a little love.</p></div></article><article class="lav"><b>▢</b><div><h3>Photos & Reels</h3><p>Your moments, your story.</p></div></article><article class="white"><b>✳</b><div><h3>Community</h3><p>Find your kind of people.</p></div></article></section>
+<section class="feed" id="feed"><div class="sectiontitle"><div><span class="eyebrow">THE COMMUNITY</span><h2 id="feedTitle">Explore posts</h2></div><div class="feedtabs" id="feedtabs"><button class="filter active" data-filter="all">For you</button><button class="filter" data-filter="image">Photos</button><button class="filter" data-filter="video">Reels</button><button id="savedTab" class="filter hidden">Saved</button></div></div>
+<div class="searchbar" id="searchbar"><input id="userSearch" placeholder="Find people by name or username…"><div id="searchResults"></div></div>
+<div id="composer" class="composer hidden"><div class="avatar" id="composerAvatar">Y</div><div class="composebody"><textarea id="postText" maxlength="2000" placeholder="What's on your mind?"></textarea><label class="filepick">＋ Add a photo or reel<input id="mediaFile" type="file" accept="image/jpeg,image/png,image/gif,image/webp,video/mp4,video/webm,video/quicktime"></label><div id="fileHint" class="handle">Images or videos up to 50 MB</div><input id="mediaUrl" type="url" placeholder="Or paste a photo/video URL (optional)"><div class="composefoot"><span>Share something kind ✨</span><button id="publishPost" class="btn primary">Post it ↗</button></div></div></div>
+<div id="profilePanel" class="profilepanel hidden"></div><section id="notificationsPanel" class="notifications-panel hidden"></section><div id="posts" class="posts"><div class="empty">Loading the community…</div></div></section></main>
+<footer><a class="brand" href="#">CLIQO<span>.</span></a><span>Your world. Your people.</span><span>Made for moments that matter.</span></footer></div>
+<div id="authModal" class="modal hidden" role="dialog" aria-modal="true"><div class="backdrop" data-close="1"></div><section class="panel"><button id="closeModal" class="close">×</button><div class="modalbrand">CLIQO<span>.</span></div><span class="eyebrow">YOUR PEOPLE ARE HERE</span><h2 id="modalTitle">Welcome back</h2><p id="modalSub">Sign in to your little corner of the internet.</p><div class="tabs"><button id="loginTab" class="active">Log in</button><button id="registerTab">Create account</button></div><form id="authForm"><label id="nameWrap" class="hidden">Your name<input id="nameInput" maxlength="60" placeholder="What should we call you?"></label><label id="usernameWrap" class="hidden">Username<input id="usernameInput" maxlength="24" placeholder="yourname"></label><label id="emailWrap">Email<input id="emailInput" type="email" placeholder="you@example.com"></label><label id="loginNameWrap" class="hidden">Email or username<input id="loginNameInput" placeholder="Email or username"></label><label>Password<input id="passwordInput" type="password" minlength="8" placeholder="At least 8 characters" required></label><div id="authMessage" class="message hidden"></div><button id="submitAuth" class="btn primary large full" type="submit">Log in</button></form><p class="privacy">Be kind. Be you. Keep your password private.</p></section></div><div id="profileEditModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="profileEditTitle">
+  <div class="backdrop" data-profile-close="1"></div>
+  <section class="panel profile-edit-panel">
+    <button id="closeProfileEdit" class="close" type="button" aria-label="Close">×</button>
+    <div class="modalbrand">CLIQO<span>.</span></div>
+    <span class="eyebrow">MAKE IT YOURS</span>
+    <h2 id="profileEditTitle">Edit profile</h2>
+    <form id="profileEditForm">
+      <label>Display name<input id="editDisplayName" maxlength="60" required></label>
+      <label>Bio <small>Up to 180 characters</small><textarea id="editBio" maxlength="180" rows="3" placeholder="Tell your people a little about you"></textarea></label>
+      <label>Profile photo URL<input id="editAvatarUrl" type="url" placeholder="https://…"></label>
+      <div id="profileEditMessage" class="message hidden"></div>
+      <button class="btn primary large full" type="submit">Save changes</button>
+    </form>
+  </section>
+</div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Main navigation">
+<button data-nav="home" aria-label="Home" title="Home">⌂<span>Home</span></button>
+<button data-nav="search" aria-label="Search" title="Search">⌕<span>Search</span></button>
+<button data-nav="create" aria-label="Create" title="Create">＋<span>Create</span></button>
+<button data-nav="notifications" aria-label="Notifications" title="Notifications">♡<span>Activity</span><i id="notificationBadge" class="notification-badge hidden"></i></button>
+<button data-nav="profile" aria-label="Profile" title="Profile">◉<span>Profile</span></button>
+</nav><div id="toast" class="toast hidden"></div></body></html>
